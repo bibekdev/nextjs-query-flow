@@ -8,6 +8,8 @@ import { cn } from '@/lib/utils'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useRouter } from 'next/navigation'
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
+import LeftSidebar from './left-sidebar'
 
 const Navbar = () => {
   const router = useRouter()
@@ -42,9 +44,16 @@ const Navbar = () => {
           className='lg:hidden lg:show'>
           <Search className='w-6 h-6 text-dark-grey' />
         </Button>
-        <Button size='icon' className='lg:hidden lg:show'>
-          <Menu className='w-6 h-6 text-dark-grey' />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button size='icon' className='lg:hidden lg:show'>
+              <Menu className='w-6 h-6 text-dark-grey' />
+            </Button>
+          </SheetTrigger>
+          <SheetContent className='w-[300px] border-grey'>
+            <LeftSidebar />
+          </SheetContent>
+        </Sheet>
 
         <Button
           size='lg'
